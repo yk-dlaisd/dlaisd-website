@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLAI Satellite Data - Crop Insights for Farmers</title>
+    <style>
+        /* Clean Farmer-Focused Theme */
+        :root {
+            --farmer-green: #27ae60;
+            --soil-brown: #8d6e63;
+            --sky-blue: #3498db;
+            --sun-yellow: #f1c40f;
+            --clean-white: #ffffff;
+            --light-gray: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-gray);
+        }
+
+        /* Header */
+        header {
+            background: var(--clean-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--farmer-green), var(--sky-blue));
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo-line1 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            line-height: 1.1;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-line2 {
+            font-size: 0.85rem;
+            line-height: 1.1;
+            margin-top: 2px;
+            opacity: 0.95;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .nav-menu a:hover {
+            color: var(--farmer-green);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(39, 174, 96, 0.9), rgba(52, 152, 219, 0.8));
+            color: var(--clean-white);
+            padding: 120px 20px 60px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .search-container {
+            background: var(--clean-white);
+            border-radius: 10px;
+            padding: 5px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .search-btn {
+            background: var(--sun-yellow);
+            color: var(--text-dark);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #e67e22;
+        }
+
+        .data-freshness {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            padding: 40px 20px;
+        }
+
+        .results-active {
+            display: block;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .results-header h2 {
+            color: var(--farmer-green);
+            margin-bottom: 10px;
+        }
+
+        .area-info {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .results-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .map-container {
+            background: var(--clean-white);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+
+        .map-placeholder {
+            height: 100%;
+            background: #ecf0f1;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .insights-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .insight-card {
+            background: var(--clean-white);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .insight-card h3 {
+            color: var(--farmer-green);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-placeholder {
+            height: 150px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .insight-note {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* Ecosystem Providers */
+        .providers-section {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            color: var(--farmer-green);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .providers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .provider-card {
+            background: var(--clean-white);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--farmer-green);
+        }
+
+        .provider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .provider-name {
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .provider-type {
+            background: var(--sky-blue);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .provider-services {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .provider-contact {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: var(--farmer-green);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background: #219652;
+        }
+
+        /* Simple Sections */
+        .section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background: var(--clean-white);
+        }
+
+        .simple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature-card {
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: var(--farmer-green);
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .contact-column {
+            background: var(--clean-white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .contact-column h3 {
+            color: var(--farmer-green);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .contact-item {
+            margin: 15px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .contact-icon {
+            color: var(--farmer-green);
+            font-size: 1.1rem;
+            margin-top: 2px;
+            min-width: 20px;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-weight: bold;
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .contact-value {
+            color: var(--text-light);
+            display: block;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            color: var(--farmer-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border: 1px solid var(--farmer-green);
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--farmer-green);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--clean-white);
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .footer-logo {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-logo .logo {
+            background: transparent;
+            color: var(--clean-white);
+            box-shadow: none;
+            padding: 5px 0;
+        }
+
+        .footer-section h3 {
+            color: var(--farmer-green);
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: var(--clean-white);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--sun-yellow);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--clean-white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-container {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+
+            .search-input, .search-btn {
+                border-radius: 5px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-content {
+                text-align: center;
+            }
+
+            .footer-logo {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-line1">DEEP LEARNING</div>
+                <div class="logo-line2">SATELLITE DATA</div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#for-farmers">For Farmers</a></li>
+                <li><a href="#for-business">For Business</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Know Before You Sow</h1>
+        <p>Check crop occupancy and find local service providers in your area</p>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Enter your village/town and crop name...">
+            <button class="search-btn">Search Crop Data</button>
+        </div>
+        <div class="data-freshness">
+            📅 Data updated: 2 weeks ago
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="results">
+        <div class="results-header">
+            <h2>Crop Insights for Your Area</h2>
+            <div class="area-info">Showing data for 50 km area around your location</div>
+        </div>
+
+        <div class="results-grid">
+            <!-- Map Section -->
+            <div class="map-container">
+                <div class="map-placeholder">
+                    🗺️ Interactive Map<br>
+                    <small>Showing crop distribution and service providers</small>
+                </div>
+            </div>
+
+            <!-- Insights Section -->
+            <div class="insights-container">
+                <div class="insight-card">
+                    <h3>📊 Crop Occupancy</h3>
+                    <div class="chart-placeholder">
+                        Your Selected Crop: 35%<br>
+                        Other Crops: 65%
+                    </div>
+                    <div class="insight-note">Percentage of land growing your selected crop</div>
+                </div>
+
+                <div class="insight-card">
+                    <h3>🌾 Land Usage</h3>
+                    <div class="chart-placeholder">
+                        Farm Land: 70%<br>
+                        Empty Land: 15%<br>
+                        Other Use: 15%
+                    </div>
+                    <div class="insight-note">How land is being used in your area</div>
+                </div>
+
+                <div class="insight-card">
+                    <h3>💡 Suggestion</h3>
+                    <p>Good time to sow! 65% farmers in your area are preparing for this crop.</p>
+                    <div class="insight-note">Based on historical patterns and current occupancy</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ecosystem Providers -->
+        <div class="providers-section">
+            <h3 class="section-title">Local Service Providers</h3>
+            <div class="providers-grid">
+                <div class="provider-card">
+                    <div class="provider-header">
+                        <div class="provider-name">Green Field Seeds</div>
+                        <div class="provider-type">Seeds Supplier</div>
+                    </div>
+                    <div class="provider-services">Quality seeds, fertilizers, and farming tools</div>
+                    <div class="provider-contact">
+                        <button class="contact-btn">📞 Call</button>
+                        <button class="contact-btn">📍 Directions</button>
+                    </div>
+                </div>
+
+                <div class="provider-card">
+                    <div class="provider-header">
+                        <div class="provider-name">Krishi Transport</div>
+                        <div class="provider-type">Logistics</div>
+                    </div>
+                    <div class="provider-services">Harvest transportation to market</div>
+                    <div class="provider-contact">
+                        <button class="contact-btn">📞 Call</button>
+                        <button class="contact-btn">📍 Directions</button>
+                    </div>
+                </div>
+
+                <div class="provider-card">
+                    <div class="provider-header">
+                        <div class="provider-name">Crop Care Center</div>
+                        <div class="provider-type">Pesticides</div>
+                    </div>
+                    <div class="provider-services">Organic pesticides and crop consultation</div>
+                    <div class="provider-contact">
+                        <button class="contact-btn">📞 Call</button>
+                        <button class="contact-btn">📍 Directions</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="simple-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Search Your Area</h3>
+                <p>Enter your location and crop of interest</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Get Crop Insights</h3>
+                <p>See what's growing in your region</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Find Local Help</h3>
+                <p>Connect with nearby service providers</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Farmers -->
+    <section class="section section-alt" id="for-farmers">
+        <h2 class="section-title">For Farmers</h2>
+        <div class="simple-grid">
+            <div class="feature-card">
+                <h3>Free for Farmers</h3>
+                <p>Basic crop insights and local provider information completely free</p>
+            </div>
+            <div class="feature-card">
+                <h3>Plan Better</h3>
+                <p>Know what crops are popular in your area before sowing</p>
+            </div>
+            <div class="feature-card">
+                <h3>Save Time</h3>
+                <p>Find all agricultural services in one place</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Business -->
+    <section class="section" id="for-business">
+        <h2 class="section-title">For Service Providers</h2>
+        <div class="simple-grid">
+            <div class="feature-card">
+                <h3>Basic Plan</h3>
+                <p>List your business in farmer searches</p>
+            </div>
+            <div class="feature-card">
+                <h3>Pro Plan</h3>
+                <p>Advanced analytics and customer insights</p>
+            </div>
+            <div class="feature-card">
+                <h3>Enterprise</h3>
+                <p>API access and custom solutions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section section-alt contact-section" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-grid">
+            <!-- Left Column - Customer Care & Founder -->
+            <div class="contact-column">
+                <h3>Customer Support</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div class="contact-details">
+                        <span class="contact-label">Customer Care Email</span>
+                        <span class="contact-value">customer.care@dlaisd.com</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <div class="contact-details">
+                        <span class="contact-label">Customer Care Phone</span>
+                        <span class="contact-value">8888912344</span>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px;">Founder & Director</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">👤</span>
+                    <div class="contact-details">
+                        <span class="contact-label">Yogesh Khandge</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div class="contact-details">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">yogesh.khandge@dlaisd.com</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <div class="contact-details">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">+91-9822753575</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">💼</span>
+                    <div class="contact-details">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">
+                            <a href="https://linkedin.com/in/yogesh-khandge/" target="_blank" class="social-link">
+                                linkedin.com/in/yogesh-khandge
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Company Info -->
+            <div class="contact-column">
+                <h3>Company Information</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">🏢</span>
+                    <div class="contact-details">
+                        <span class="contact-label">DLAI Satellite Data (OPC) Pvt Ltd</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div class="contact-details">
+                        <span class="contact-label">Address</span>
+                        <span class="contact-value">
+                            C8, Everest Heights, Park Road,<br>
+                            Viman Nagar, Pune, MH, India<br>
+                            PIN 411014
+                        </span>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px;">Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://linkedin.com/company/dlaisd/" target="_blank" class="social-link">
+                        💼 LinkedIn
+                    </a>
+                    <a href="https://youtube.com/@DLAISD/playlists" target="_blank" class="social-link">
+                        📺 YouTube
+                    </a>
+                    <a href="https://dlaisd.com/" target="_blank" class="social-link">
+                        🌐 Website
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-line1">DEEP LEARNING</div>
+                        <div class="logo-line2">SATELLITE DATA</div>
+                    </div>
+                </div>
+                <p>Empowering farmers with AI-driven satellite insights for sustainable agriculture.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#for-farmers">For Farmers</a>
+                    <a href="#for-business">For Business</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="footer-links">
+                    <span>📧 customer.care@dlaisd.com</span>
+                    <span>📱 8888912344</span>
+                    <span>🏢 Pune, MH, India</span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 DLAI Satellite Data (OPC) Pvt Ltd. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Search Functionality
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            const searchQuery = document.querySelector('.search-input').value;
+            if (searchQuery.trim()) {
+                // Show results section
+                document.querySelector('.results-section').classList.add('results-active');
+                
+                // Scroll to results
+                document.querySelector('.results-section').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            }
+        });
+
+        // Enter key for search
+        document.querySelector('.search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.search-btn').click();
+            }
+        });
+
+        // Simple smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.querySelector('.nav-menu').classList.remove('active');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-container')) {
+                document.querySelector('.nav-menu').classList.remove('active');
+            }
+        });
+
+        // Simulate contact buttons
+        document.querySelectorAll('.contact-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.textContent.includes('Call')) {
+                    alert('Calling service provider...');
+                } else if (this.textContent.includes('Directions')) {
+                    alert('Opening map for directions...');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
