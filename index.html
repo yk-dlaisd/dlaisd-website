@@ -1,68 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="description" content="DLAI Satellite Data - Empowering farmers with AI-driven crop insights and satellite data analytics. Get real-time crop occupancy, land usage patterns, and connect with local service providers.">
-<meta name="keywords" content="satellite data, crop insights, farming, agriculture, AI, deep learning, crop occupancy, land usage">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DLAI Satellite Data - Crop Insights for Farmers</title>
     <style>
-        /* Language Switcher */
-        .language-switcher {
-            position: relative;
-            margin-left: 20px;
-        }
-
-        .language-btn {
-            background: var(--farmer-green);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.9rem;
-        }
-
-        .language-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: none;
-            min-width: 150px;
-            z-index: 1001;
-        }
-
-        .language-dropdown.active {
-            display: block;
-        }
-
-        .language-option {
-            padding: 10px 15px;
-            cursor: pointer;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .language-option:hover {
-            background: var(--light-gray);
-        }
-
-        .language-option:last-child {
-            border-bottom: none;
-        }
-
-        .language-flag {
-            font-size: 1.2rem;
-        }
         /* Clean Farmer-Focused Theme */
         :root {
             --farmer-green: #27ae60;
@@ -132,7 +74,6 @@
             display: flex;
             justify-content: center;
         }
-
         .nav-menu {
             display: flex;
             list-style: none;
@@ -156,6 +97,65 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .language-btn {
+            background: var(--farmer-green);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+            min-width: 150px;
+            z-index: 1001;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .language-dropdown.active {
+            display: block;
+        }
+
+        .language-option {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-option:hover {
+            background: var(--light-gray);
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-flag {
+            font-size: 1.2rem;
         }
 
         /* Hero Section */
@@ -520,11 +520,10 @@
             justify-content: center;
         }
 
-        .footer-logo .logo {
-            background: transparent;
-            color: var(--clean-white);
-            box-shadow: none;
-            padding: 5px 0;
+        .footer-logo-img {
+            height: 35px;
+            width: auto;
+            max-width: 180px;
         }
 
         .footer-section h3 {
@@ -606,122 +605,191 @@
             .footer-logo {
                 justify-content: center;
             }
+
+            .language-switcher {
+                margin-left: 10px;
+            }
+
+            .language-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
         }
     </style>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="DLAI Satellite Data - AI-powered crop insights for farmers. Get real-time satellite data on crop occupancy, land usage, and connect with local agricultural service providers.">
+    <meta name="keywords" content="satellite data, crop insights, farming technology, agricultural AI, deep learning, crop monitoring">
+    <meta name="author" content="DLAI Satellite Data (OPC) Pvt Ltd">
+    
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="DLAI Satellite Data - Empowering Farmers with AI">
+    <meta property="og:description" content="Get real-time crop insights and connect with local service providers">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dlaisd.com">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="nav-container">
-        <div class="logo">
-            <img src="company logo.png" alt="DLAI Satellite Data - Deep Learning Satellite Data" class="logo-img">
-        </div>
-            <button class="mobile-menu-btn">☰</button>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#for-farmers">For Farmers</a></li>
-                <li><a href="#for-business">For Business</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="logo">
+                <img src="company logo.png" alt="DLAI Satellite Data - Deep Learning Satellite Data" class="logo-img">
+            </div>            
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="language-switcher">
+                    <button class="language-btn" id="languageBtn">
+                        🌐 English
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <div class="language-option" data-lang="en">
+                            <span class="language-flag">🇺🇸</span>
+                            English
+                        </div>
+                        <div class="language-option" data-lang="hi">
+                            <span class="language-flag">🇮🇳</span>
+                            हिन्दी (Hindi)
+                        </div>
+                        <div class="language-option" data-lang="mr">
+                            <span class="language-flag">🇮🇳</span>
+                            मराठी (Marathi)
+                        </div>
+                        <div class="language-option" data-lang="gu">
+                            <span class="language-flag">🇮🇳</span>
+                            ગુજરાતી (Gujarati)
+                        </div>
+                        <div class="language-option" data-lang="ta">
+                            <span class="language-flag">🇮🇳</span>
+                            தமிழ் (Tamil)
+                        </div>
+                        <div class="language-option" data-lang="kn">
+                            <span class="language-flag">🇮🇳</span>
+                            ಕನ್ನಡ (Kannada)
+                        </div>
+                        <div class="language-option" data-lang="or">
+                            <span class="language-flag">🇮🇳</span>
+                            ଓଡ଼ିଆ (Odia)
+                        </div>
+                        <div class="language-option" data-lang="ml">
+                            <span class="language-flag">🇮🇳</span>
+                            മലയാളം (Malayalam)
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mobile-menu-btn">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#how-it-works" data-i18n="nav.how_it_works">How It Works</a></li>
+                    <li><a href="#for-farmers" data-i18n="nav.for_farmers">For Farmers</a></li>
+                    <li><a href="#for-business" data-i18n="nav.for_business">For Business</a></li>
+                    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <h1>Know Before You Sow</h1>
-        <p>Check crop occupancy and find local service providers in your area</p>
+        <h1 data-i18n="hero.title">Know Before You Sow</h1>
+        <p data-i18n="hero.subtitle">Check crop occupancy and find local service providers in your area</p>
         <div class="search-container">
-            <input type="text" class="search-input" placeholder="Enter your village/town and crop name...">
-            <button class="search-btn">Search Crop Data</button>
+            <input type="text" class="search-input" data-i18n-placeholder="search.placeholder" placeholder="Enter your village/town and crop name...">
+            <button class="search-btn" data-i18n="search.button">Search Crop Data</button>
         </div>
         <div class="data-freshness">
-            📅 Data updated: 2 weeks ago
+            <span data-i18n="data.freshness">📅 Data updated: 2 weeks ago</span>
         </div>
     </section>
 
     <!-- Results Section -->
     <section class="results-section" id="results">
         <div class="results-header">
-            <h2>Crop Insights for Your Area</h2>
-            <div class="area-info">Showing data for 50 km area around your location</div>
+            <h2 data-i18n="results.title">Crop Insights for Your Area</h2>
+            <div class="area-info" data-i18n="results.area_info">Showing data for 50 km area around your location</div>
         </div>
 
         <div class="results-grid">
             <!-- Map Section -->
             <div class="map-container">
                 <div class="map-placeholder">
-                    🗺️ Interactive Map<br>
-                    <small>Showing crop distribution and service providers</small>
+                    🗺️ <span data-i18n="map.title">Interactive Map</span><br>
+                    <small data-i18n="map.subtitle">Showing crop distribution and service providers</small>
                 </div>
             </div>
 
             <!-- Insights Section -->
             <div class="insights-container">
                 <div class="insight-card">
-                    <h3>📊 Crop Occupancy</h3>
+                    <h3>📊 <span data-i18n="results.crop_occupancy">Crop Occupancy</span></h3>
                     <div class="chart-placeholder">
-                        Your Selected Crop: 35%<br>
-                        Other Crops: 65%
+                        <span data-i18n="results.your_crop">Your Selected Crop</span>: 35%<br>
+                        <span data-i18n="results.other_crops">Other Crops</span>: 65%
                     </div>
-                    <div class="insight-note">Percentage of land growing your selected crop</div>
+                    <div class="insight-note" data-i18n="results.crop_percentage">Percentage of land growing your selected crop</div>
                 </div>
 
                 <div class="insight-card">
-                    <h3>🌾 Land Usage</h3>
+                    <h3>🌾 <span data-i18n="results.land_usage">Land Usage</span></h3>
                     <div class="chart-placeholder">
-                        Farm Land: 70%<br>
-                        Empty Land: 15%<br>
-                        Other Use: 15%
+                        <span data-i18n="results.farm_land">Farm Land</span>: 70%<br>
+                        <span data-i18n="results.empty_land">Empty Land</span>: 15%<br>
+                        <span data-i18n="results.other_use">Other Use</span>: 15%
                     </div>
-                    <div class="insight-note">How land is being used in your area</div>
+                    <div class="insight-note" data-i18n="results.land_usage_note">How land is being used in your area</div>
                 </div>
 
                 <div class="insight-card">
-                    <h3>💡 Suggestion</h3>
-                    <p>Good time to sow! 65% farmers in your area are preparing for this crop.</p>
-                    <div class="insight-note">Based on historical patterns and current occupancy</div>
+                    <h3>💡 <span data-i18n="results.suggestion">Suggestion</span></h3>
+                    <p data-i18n="results.suggestion_text">Good time to sow! 65% farmers in your area are preparing for this crop.</p>
+                    <div class="insight-note" data-i18n="results.suggestion_note">Based on historical patterns and current occupancy</div>
                 </div>
             </div>
         </div>
 
         <!-- Ecosystem Providers -->
         <div class="providers-section">
-            <h3 class="section-title">Local Service Providers</h3>
+            <h3 class="section-title" data-i18n="providers.title">Local Service Providers</h3>
             <div class="providers-grid">
                 <div class="provider-card">
                     <div class="provider-header">
-                        <div class="provider-name">Green Field Seeds</div>
-                        <div class="provider-type">Seeds Supplier</div>
+                        <div class="provider-name" data-i18n="providers.seeds.name">Green Field Seeds</div>
+                        <div class="provider-type" data-i18n="providers.seeds.type">Seeds Supplier</div>
                     </div>
-                    <div class="provider-services">Quality seeds, fertilizers, and farming tools</div>
+                    <div class="provider-services" data-i18n="providers.seeds.services">Quality seeds, fertilizers, and farming tools</div>
                     <div class="provider-contact">
-                        <button class="contact-btn">📞 Call</button>
-                        <button class="contact-btn">📍 Directions</button>
+                        <button class="contact-btn" data-i18n="contact.call">📞 Call</button>
+                        <button class="contact-btn" data-i18n="contact.directions">📍 Directions</button>
                     </div>
                 </div>
 
                 <div class="provider-card">
                     <div class="provider-header">
-                        <div class="provider-name">Krishi Transport</div>
-                        <div class="provider-type">Logistics</div>
+                        <div class="provider-name" data-i18n="providers.transport.name">Krishi Transport</div>
+                        <div class="provider-type" data-i18n="providers.transport.type">Logistics</div>
                     </div>
-                    <div class="provider-services">Harvest transportation to market</div>
+                    <div class="provider-services" data-i18n="providers.transport.services">Harvest transportation to market</div>
                     <div class="provider-contact">
-                        <button class="contact-btn">📞 Call</button>
-                        <button class="contact-btn">📍 Directions</button>
+                        <button class="contact-btn" data-i18n="contact.call">📞 Call</button>
+                        <button class="contact-btn" data-i18n="contact.directions">📍 Directions</button>
                     </div>
                 </div>
 
                 <div class="provider-card">
                     <div class="provider-header">
-                        <div class="provider-name">Crop Care Center</div>
-                        <div class="provider-type">Pesticides</div>
+                        <div class="provider-name" data-i18n="providers.pesticides.name">Crop Care Center</div>
+                        <div class="provider-type" data-i18n="providers.pesticides.type">Pesticides</div>
                     </div>
-                    <div class="provider-services">Organic pesticides and crop consultation</div>
+                    <div class="provider-services" data-i18n="providers.pesticides.services">Organic pesticides and crop consultation</div>
                     <div class="provider-contact">
-                        <button class="contact-btn">📞 Call</button>
-                        <button class="contact-btn">📍 Directions</button>
+                        <button class="contact-btn" data-i18n="contact.call">📞 Call</button>
+                        <button class="contact-btn" data-i18n="contact.directions">📍 Directions</button>
                     </div>
                 </div>
             </div>
@@ -730,87 +798,87 @@
 
     <!-- How It Works -->
     <section class="section" id="how-it-works">
-        <h2 class="section-title">How It Works</h2>
+        <h2 class="section-title" data-i18n="how_it_works.title">How It Works</h2>
         <div class="simple-grid">
             <div class="feature-card">
                 <div class="feature-icon">🔍</div>
-                <h3>Search Your Area</h3>
-                <p>Enter your location and crop of interest</p>
+                <h3 data-i18n="how_it_works.search">Search Your Area</h3>
+                <p data-i18n="how_it_works.search_desc">Enter your location and crop of interest</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📊</div>
-                <h3>Get Crop Insights</h3>
-                <p>See what's growing in your region</p>
+                <h3 data-i18n="how_it_works.insights">Get Crop Insights</h3>
+                <p data-i18n="how_it_works.insights_desc">See what's growing in your region</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🤝</div>
-                <h3>Find Local Help</h3>
-                <p>Connect with nearby service providers</p>
+                <h3 data-i18n="how_it_works.help">Find Local Help</h3>
+                <p data-i18n="how_it_works.help_desc">Connect with nearby service providers</p>
             </div>
         </div>
     </section>
 
     <!-- For Farmers -->
     <section class="section section-alt" id="for-farmers">
-        <h2 class="section-title">For Farmers</h2>
+        <h2 class="section-title" data-i18n="farmers.title">For Farmers</h2>
         <div class="simple-grid">
             <div class="feature-card">
-                <h3>Free for Farmers</h3>
-                <p>Basic crop insights and local provider information completely free</p>
+                <h3 data-i18n="farmers.free">Free for Farmers</h3>
+                <p data-i18n="farmers.free_desc">Basic crop insights and local provider information completely free</p>
             </div>
             <div class="feature-card">
-                <h3>Plan Better</h3>
-                <p>Know what crops are popular in your area before sowing</p>
+                <h3 data-i18n="farmers.plan">Plan Better</h3>
+                <p data-i18n="farmers.plan_desc">Know what crops are popular in your area before sowing</p>
             </div>
             <div class="feature-card">
-                <h3>Save Time</h3>
-                <p>Find all agricultural services in one place</p>
+                <h3 data-i18n="farmers.save_time">Save Time</h3>
+                <p data-i18n="farmers.save_time_desc">Find all agricultural services in one place</p>
             </div>
         </div>
     </section>
 
     <!-- For Business -->
     <section class="section" id="for-business">
-        <h2 class="section-title">For Service Providers</h2>
+        <h2 class="section-title" data-i18n="business.title">For Service Providers</h2>
         <div class="simple-grid">
             <div class="feature-card">
-                <h3>Basic Plan</h3>
-                <p>List your business in farmer searches</p>
+                <h3 data-i18n="business.basic">Basic Plan</h3>
+                <p data-i18n="business.basic_desc">List your business in farmer searches</p>
             </div>
             <div class="feature-card">
-                <h3>Pro Plan</h3>
-                <p>Advanced analytics and customer insights</p>
+                <h3 data-i18n="business.pro">Pro Plan</h3>
+                <p data-i18n="business.pro_desc">Advanced analytics and customer insights</p>
             </div>
             <div class="feature-card">
-                <h3>Enterprise</h3>
-                <p>API access and custom solutions</p>
+                <h3 data-i18n="business.enterprise">Enterprise</h3>
+                <p data-i18n="business.enterprise_desc">API access and custom solutions</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section class="section section-alt contact-section" id="contact">
-        <h2 class="section-title">Contact Us</h2>
+        <h2 class="section-title" data-i18n="contact.title">Contact Us</h2>
         <div class="contact-grid">
             <!-- Left Column - Customer Care & Founder -->
             <div class="contact-column">
-                <h3>Customer Support</h3>
+                <h3 data-i18n="contact.customer_support">Customer Support</h3>
                 <div class="contact-item">
                     <span class="contact-icon">📧</span>
                     <div class="contact-details">
-                        <span class="contact-label">Customer Care Email</span>
+                        <span class="contact-label" data-i18n="contact.customer_email">Customer Care Email</span>
                         <span class="contact-value">customer.care@dlaisd.com</span>
                     </div>
                 </div>
                 <div class="contact-item">
                     <span class="contact-icon">📱</span>
                     <div class="contact-details">
-                        <span class="contact-label">Customer Care Phone</span>
+                        <span class="contact-label" data-i18n="contact.customer_phone">Customer Care Phone</span>
                         <span class="contact-value">8888912344</span>
                     </div>
                 </div>
 
-                <h3 style="margin-top: 30px;">Founder & Director</h3>
+                <h3 style="margin-top: 30px;" data-i18n="contact.founder">Founder & Director</h3>
                 <div class="contact-item">
                     <span class="contact-icon">👤</span>
                     <div class="contact-details">
@@ -820,21 +888,21 @@
                 <div class="contact-item">
                     <span class="contact-icon">📧</span>
                     <div class="contact-details">
-                        <span class="contact-label">Email</span>
+                        <span class="contact-label" data-i18n="contact.email">Email</span>
                         <span class="contact-value">yogesh.khandge@dlaisd.com</span>
                     </div>
                 </div>
                 <div class="contact-item">
                     <span class="contact-icon">📱</span>
                     <div class="contact-details">
-                        <span class="contact-label">Phone</span>
+                        <span class="contact-label" data-i18n="contact.phone">Phone</span>
                         <span class="contact-value">+91-9822753575</span>
                     </div>
                 </div>
                 <div class="contact-item">
                     <span class="contact-icon">💼</span>
                     <div class="contact-details">
-                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-label" data-i18n="contact.linkedin">LinkedIn</span>
                         <span class="contact-value">
                             <a href="https://linkedin.com/in/yogesh-khandge/" target="_blank" class="social-link">
                                 linkedin.com/in/yogesh-khandge
@@ -846,7 +914,7 @@
 
             <!-- Right Column - Company Info -->
             <div class="contact-column">
-                <h3>Company Information</h3>
+                <h3 data-i18n="contact.company_info">Company Information</h3>
                 <div class="contact-item">
                     <span class="contact-icon">🏢</span>
                     <div class="contact-details">
@@ -856,7 +924,7 @@
                 <div class="contact-item">
                     <span class="contact-icon">📍</span>
                     <div class="contact-details">
-                        <span class="contact-label">Address</span>
+                        <span class="contact-label" data-i18n="contact.address">Address</span>
                         <span class="contact-value">
                             C8, Everest Heights, Park Road,<br>
                             Viman Nagar, Pune, MH, India<br>
@@ -865,7 +933,7 @@
                     </div>
                 </div>
 
-                <h3 style="margin-top: 30px;">Connect With Us</h3>
+                <h3 style="margin-top: 30px;" data-i18n="contact.connect">Connect With Us</h3>
                 <div class="social-links">
                     <a href="https://linkedin.com/company/dlaisd/" target="_blank" class="social-link">
                         💼 LinkedIn
@@ -888,20 +956,20 @@
                 <div class="footer-logo">
                     <img src="company logo.png" alt="DLAI Satellite Data - Deep Learning Satellite Data" class="footer-logo-img">
                 </div>
-                <p>Empowering farmers with AI-driven satellite insights for sustainable agriculture.</p>
+                <p data-i18n="footer.tagline">Empowering farmers with AI-driven satellite insights for sustainable agriculture.</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3 data-i18n="footer.quick_links">Quick Links</h3>
                 <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#how-it-works">How It Works</a>
-                    <a href="#for-farmers">For Farmers</a>
-                    <a href="#for-business">For Business</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#home" data-i18n="nav.home">Home</a>
+                    <a href="#how-it-works" data-i18n="nav.how_it_works">How It Works</a>
+                    <a href="#for-farmers" data-i18n="nav.for_farmers">For Farmers</a>
+                    <a href="#for-business" data-i18n="nav.for_business">For Business</a>
+                    <a href="#contact" data-i18n="nav.contact">Contact</a>
                 </div>
             </div>
             <div class="footer-section">
-                <h3>Contact Info</h3>
+                <h3 data-i18n="footer.contact_info">Contact Info</h3>
                 <div class="footer-links">
                     <span>📧 customer.care@dlaisd.com</span>
                     <span>📱 8888912344</span>
@@ -915,62 +983,413 @@
     </footer>
 
     <script>
-        // Mobile Menu
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
+        // Translation system
+        const translations = {
+            en: {
+                // Navigation
+                "nav.home": "Home",
+                "nav.how_it_works": "How It Works",
+                "nav.for_farmers": "For Farmers",
+                "nav.for_business": "For Business",
+                "nav.contact": "Contact",
 
-        // Search Functionality
-        document.querySelector('.search-btn').addEventListener('click', function() {
-            const searchQuery = document.querySelector('.search-input').value;
-            if (searchQuery.trim()) {
-                // Show results section
-                document.querySelector('.results-section').classList.add('results-active');
-                
-                // Scroll to results
-                document.querySelector('.results-section').scrollIntoView({ 
-                    behavior: 'smooth' 
+                // Hero Section
+                "hero.title": "Know Before You Sow",
+                "hero.subtitle": "Check crop occupancy and find local service providers in your area",
+                "search.placeholder": "Enter your village/town and crop name...",
+                "search.button": "Search Crop Data",
+                "data.freshness": "📅 Data updated: 2 weeks ago",
+
+                // Results Section
+                "results.title": "Crop Insights for Your Area",
+                "results.area_info": "Showing data for 50 km area around your location",
+                "results.crop_occupancy": "Crop Occupancy",
+                "results.land_usage": "Land Usage",
+                "results.suggestion": "Suggestion",
+                "results.your_crop": "Your Selected Crop",
+                "results.other_crops": "Other Crops",
+                "results.farm_land": "Farm Land",
+                "results.empty_land": "Empty Land",
+                "results.other_use": "Other Use",
+                "results.crop_percentage": "Percentage of land growing your selected crop",
+                "results.land_usage_note": "How land is being used in your area",
+                "results.suggestion_text": "Good time to sow! 65% farmers in your area are preparing for this crop.",
+                "results.suggestion_note": "Based on historical patterns and current occupancy",
+
+                // Map
+                "map.title": "Interactive Map",
+                "map.subtitle": "Showing crop distribution and service providers",
+
+                // Providers
+                "providers.title": "Local Service Providers",
+                "providers.seeds.name": "Green Field Seeds",
+                "providers.seeds.type": "Seeds Supplier",
+                "providers.seeds.services": "Quality seeds, fertilizers, and farming tools",
+                "providers.transport.name": "Krishi Transport",
+                "providers.transport.type": "Logistics",
+                "providers.transport.services": "Harvest transportation to market",
+                "providers.pesticides.name": "Crop Care Center",
+                "providers.pesticides.type": "Pesticides",
+                "providers.pesticides.services": "Organic pesticides and crop consultation",
+
+                // How It Works
+                "how_it_works.title": "How It Works",
+                "how_it_works.search": "Search Your Area",
+                "how_it_works.search_desc": "Enter your location and crop of interest",
+                "how_it_works.insights": "Get Crop Insights",
+                "how_it_works.insights_desc": "See what's growing in your region",
+                "how_it_works.help": "Find Local Help",
+                "how_it_works.help_desc": "Connect with nearby service providers",
+
+                // For Farmers
+                "farmers.title": "For Farmers",
+                "farmers.free": "Free for Farmers",
+                "farmers.free_desc": "Basic crop insights and local provider information completely free",
+                "farmers.plan": "Plan Better",
+                "farmers.plan_desc": "Know what crops are popular in your area before sowing",
+                "farmers.save_time": "Save Time",
+                "farmers.save_time_desc": "Find all agricultural services in one place",
+
+                // For Business
+                "business.title": "For Service Providers",
+                "business.basic": "Basic Plan",
+                "business.basic_desc": "List your business in farmer searches",
+                "business.pro": "Pro Plan",
+                "business.pro_desc": "Advanced analytics and customer insights",
+                "business.enterprise": "Enterprise",
+                "business.enterprise_desc": "API access and custom solutions",
+
+                // Contact Section
+                "contact.title": "Contact Us",
+                "contact.customer_support": "Customer Support",
+                "contact.customer_email": "Customer Care Email",
+                "contact.customer_phone": "Customer Care Phone",
+                "contact.founder": "Founder & Director",
+                "contact.email": "Email",
+                "contact.phone": "Phone",
+                "contact.linkedin": "LinkedIn",
+                "contact.company_info": "Company Information",
+                "contact.address": "Address",
+                "contact.connect": "Connect With Us",
+                "contact.call": "📞 Call",
+                "contact.directions": "📍 Directions",
+
+                // Footer
+                "footer.tagline": "Empowering farmers with AI-driven satellite insights for sustainable agriculture.",
+                "footer.quick_links": "Quick Links",
+                "footer.contact_info": "Contact Info"
+            },
+
+            hi: {
+                // Hindi Translations
+                "nav.home": "होम",
+                "nav.how_it_works": "कैसे काम करता है",
+                "nav.for_farmers": "किसानों के लिए",
+                "nav.for_business": "व्यवसाय के लिए",
+                "nav.contact": "संपर्क करें",
+
+                "hero.title": "बोने से पहले जानें",
+                "hero.subtitle": "फसल व्याप्ति की जाँच करें और अपने क्षेत्र में स्थानीय सेवा प्रदाताओं को ढूंढें",
+                "search.placeholder": "अपने गाँव/शहर और फसल का नाम दर्ज करें...",
+                "search.button": "फसल डेटा खोजें",
+                "data.freshness": "📅 डेटा अपडेट किया गया: 2 सप्ताह पहले",
+
+                "results.title": "आपके क्षेत्र के लिए फसल जानकारी",
+                "results.area_info": "आपके स्थान के आसपास के 50 किमी क्षेत्र का डेटा दिखा रहा है",
+                "results.crop_occupancy": "फसल व्याप्ति",
+                "results.land_usage": "भूमि उपयोग",
+                "results.suggestion": "सुझाव",
+                "results.your_crop": "आपकी चयनित फसल",
+                "results.other_crops": "अन्य फसलें",
+                "results.farm_land": "कृषि भूमि",
+                "results.empty_land": "खाली भूमि",
+                "results.other_use": "अन्य उपयोग",
+                "results.crop_percentage": "आपकी चयनित फसल उगाने वाली भूमि का प्रतिशत",
+                "results.land_usage_note": "आपके क्षेत्र में भूमि का उपयोग कैसे हो रहा है",
+                "results.suggestion_text": "बोने का अच्छा समय! आपके क्षेत्र के 65% किसान इस फसल की तैयारी कर रहे हैं।",
+                "results.suggestion_note": "ऐतिहासिक पैटर्न और वर्तमान व्याप्ति के आधार पर",
+
+                "map.title": "इंटरएक्टिव मानचित्र",
+                "map.subtitle": "फसल वितरण और सेवा प्रदाताओं को दिखा रहा है",
+
+                "providers.title": "स्थानीय सेवा प्रदाता",
+                "providers.seeds.name": "ग्रीन फील्ड सीड्स",
+                "providers.seeds.type": "बीज आपूर्तिकर्ता",
+                "providers.seeds.services": "गुणवत्तापूर्ण बीज, उर्वरक और कृषि उपकरण",
+                "providers.transport.name": "कृषि परिवहन",
+                "providers.transport.type": "लॉजिस्टिक्स",
+                "providers.transport.services": "बाजार के लिए फसल परिवहन",
+                "providers.pesticides.name": "फसल देखभाल केंद्र",
+                "providers.pesticides.type": "कीटनाशक",
+                "providers.pesticides.services": "जैविक कीटनाशक और फसल परामर्श",
+
+                "how_it_works.title": "कैसे काम करता है",
+                "how_it_works.search": "अपना क्षेत्र खोजें",
+                "how_it_works.search_desc": "अपना स्थान और रुचि की फसल दर्ज करें",
+                "how_it_works.insights": "फसल जानकारी प्राप्त करें",
+                "how_it_works.insights_desc": "देखें कि आपके क्षेत्र में क्या उग रहा है",
+                "how_it_works.help": "स्थानीय सहायता ढूंढें",
+                "how_it_works.help_desc": "आस-पास के सेवा प्रदाताओं से जुड़ें",
+
+                "farmers.title": "किसानों के लिए",
+                "farmers.free": "किसानों के लिए मुफ्त",
+                "farmers.free_desc": "मूल फसल जानकारी और स्थानीय प्रदाता जानकारी पूरी तरह से मुफ्त",
+                "farmers.plan": "बेहतर योजना बनाएं",
+                "farmers.plan_desc": "बोने से पहले जानें कि आपके क्षेत्र में कौन सी फसलें लोकप्रिय हैं",
+                "farmers.save_time": "समय बचाएं",
+                "farmers.save_time_desc": "एक ही स्थान पर सभी कृषि सेवाएं खोजें",
+
+                "business.title": "सेवा प्रदाताओं के लिए",
+                "business.basic": "बेसिक प्लान",
+                "business.basic_desc": "किसान खोजों में अपना व्यवसाय सूचीबद्ध करें",
+                "business.pro": "प्रो प्लान",
+                "business.pro_desc": "उन्नत एनालिटिक्स और ग्राहक जानकारी",
+                "business.enterprise": "एंटरप्राइज",
+                "business.enterprise_desc": "एपीआई एक्सेस और कस्टम समाधान",
+
+                "contact.title": "संपर्क करें",
+                "contact.customer_support": "ग्राहक सहायता",
+                "contact.customer_email": "ग्राहक देखभाल ईमेल",
+                "contact.customer_phone": "ग्राहक देखभाल फोन",
+                "contact.founder": "संस्थापक और निदेशक",
+                "contact.email": "ईमेल",
+                "contact.phone": "फोन",
+                "contact.linkedin": "लिंक्डइन",
+                "contact.company_info": "कंपनी की जानकारी",
+                "contact.address": "पता",
+                "contact.connect": "हमसे जुड़ें",
+                "contact.call": "📞 कॉल करें",
+                "contact.directions": "📍 दिशा-निर्देश",
+
+                "footer.tagline": "किसानों को एआई-संचालित उपग्रह अंतर्दृष्टि के साथ सशक्त बनाना।",
+                "footer.quick_links": "त्वरित लिंक",
+                "footer.contact_info": "संपर्क जानकारी"
+            },
+
+            mr: {
+                // Marathi Translations
+                "nav.home": "मुख्यपृष्ठ",
+                "nav.how_it_works": "कसे काम करते",
+                "nav.for_farmers": "शेतकऱ्यांसाठी",
+                "nav.for_business": "व्यवसायासाठी",
+                "nav.contact": "संपर्क",
+
+                "hero.title": "पेरणीपूर्वी जाणून घ्या",
+                "hero.subtitle": "पिक व्याप्ती तपासा आणि तुमच्या परिसरातील स्थानिक सेवा प्रदाते शोधा",
+                "search.placeholder": "तुमचे गाव/शहर आणि पिकाचे नाम प्रविष्ट करा...",
+                "search.button": "पिक डेटा शोधा",
+                "data.freshness": "📅 डेटा अद्ययावत: 2 आठवड्यापूर्वी"
+                // Add more Marathi translations as needed
+            },
+
+            gu: {
+                // Gujarati Translations
+                "nav.home": "હોમ",
+                "nav.how_it_works": "કેવી રીતે કામ કરે છે",
+                "nav.for_farmers": "ખેડૂતો માટે",
+                "nav.for_business": "વ્યવસાય માટે",
+                "nav.contact": "સંપર્ક કરો",
+
+                "hero.title": "વાવતા પહેલાં જાણો",
+                "hero.subtitle": "પાક વ્યાપતિ તપાસો અને તમારા વિસ્તારમાં સ્થાનિક સેવા પ્રદાતાઓ શોધો",
+                "search.placeholder": "તમારું ગામ/શહેર અને પાકનું નામ દાખલ કરો...",
+                "search.button": "પાક ડેટા શોધો",
+                "data.freshness": "📅 ડેટા અપડેટ: 2 અઠવાડિયા પહેલાં"
+                // Add more Gujarati translations as needed
+            },
+
+            ta: {
+                // Tamil Translations
+                "nav.home": "முகப்பு",
+                "nav.how_it_works": "எப்படி வேலை செய்கிறது",
+                "nav.for_farmers": "விவசாயிகளுக்காக",
+                "nav.for_business": "வணிகத்திற்காக",
+                "nav.contact": "தொடர்பு",
+
+                "hero.title": "விதைப்பதற்கு முன் அறிந்து கொள்ளுங்கள்",
+                "hero.subtitle": "பயிர் ஆக்கிரமிப்பை சரிபார்க்கவும் உங்கள் பகுதியில் உள்ள உள்ளூர் சேவை வழங்குநர்களைக் கண்டறியவும்",
+                "search.placeholder": "உங்கள் கிராமம்/நகரம் மற்றும் பயிர் பெயரை உள்ளிடவும்...",
+                "search.button": "பயிர் தரவைத் தேடுங்கள்",
+                "data.freshness": "📅 தரவு புதுப்பிக்கப்பட்டது: 2 வாரங்களுக்கு முன்பு"
+                // Add more Tamil translations as needed
+            },
+
+            kn: {
+                // Kannada Translations
+                "nav.home": "ಮುಖಪುಟ",
+                "nav.how_it_works": "ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ",
+                "nav.for_farmers": "ರೈತರಿಗಾಗಿ",
+                "nav.for_business": "ವ್ಯವಸಾಯಕ್ಕಾಗಿ",
+                "nav.contact": "ಸಂಪರ್ಕಿಸಿ",
+
+                "hero.title": "ಬಿತ್ತನೆ ಮಾಡುವ ಮೊದಲು ತಿಳಿಯಿರಿ",
+                "hero.subtitle": "ಪೈರು ಆಕ್ರಮಣತನವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ನಿಮ್ಮ ಪ್ರದೇಶದಲ್ಲಿ ಸ್ಥಳೀಯ ಸೇವಾ ಪೂರೈಕೆದಾರರನ್ನು ಹುಡುಕಿ",
+                "search.placeholder": "ನಿಮ್ಮ ಗ್ರಾಮ/ನಗರ ಮತ್ತು ಪೈರು ಹೆಸರನ್ನು ನಮೂದಿಸಿ...",
+                "search.button": "ಪೈರು ಡೇಟಾ ಹುಡುಕಿ",
+                "data.freshness": "📅 ಡೇಟಾ ನವೀಕರಿಸಲಾಗಿದೆ: 2 ವಾರಗಳ ಹಿಂದೆ"
+                // Add more Kannada translations as needed
+            },
+
+            or: {
+                // Odia Translations
+                "nav.home": "ମୁଖ୍ୟପୃଷ୍ଠା",
+                "nav.how_it_works": "କିଭଳି କାମ କରେ",
+                "nav.for_farmers": "କୃଷକଙ୍କ ପାଇଁ",
+                "nav.for_business": "ବ୍ୟବସାୟ ପାଇଁ",
+                "nav.contact": "ସମ୍ପର୍କ କରନ୍ତୁ",
+
+                "hero.title": "ବୁଣିବା ପୂର୍ବରୁ ଜାଣନ୍ତୁ",
+                "hero.subtitle": "ଫସଲ ଅଧିକାର ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ଆପଣଙ୍କ ଅଞ୍ଚଳରେ ସ୍ଥାନୀୟ ସେବା ପ୍ରଦାନକାରୀଙ୍କୁ ଖୋଜନ୍ତୁ",
+                "search.placeholder": "ଆପଣଙ୍କର ଗାଁ/ସହର ଏବଂ ଫସଲର ନାମ ପ୍ରବେଶ କରନ୍ତୁ...",
+                "search.button": "ଫସଲ ତଥ୍ୟ ଖୋଜନ୍ତୁ",
+                "data.freshness": "📅 ତଥ୍ୟ ଅଦ୍ୟତନ: 2 ସପ୍ତାହ ପୂର୍ବେ"
+                // Add more Odia translations as needed
+            },
+
+            ml: {
+                // Malayalam Translations
+                "nav.home": "ഹോം",
+                "nav.how_it_works": "എങ്ങനെ പ്രവർത്തിക്കുന്നു",
+                "nav.for_farmers": "കർഷകർക്കായി",
+                "nav.for_business": "വ്യവസായത്തിനായി",
+                "nav.contact": "ബന്ധപ്പെടുക",
+
+                "hero.title": "വിതയ്ക്കുന്നതിന് മുമ്പ് അറിയുക",
+                "hero.subtitle": "ഫസൽ ഉടമസ്ഥത പരിശോധിക്കുക, നിങ്ങളുടെ പ്രദേശത്തെ പ്രാദേശിക സേവന ദാതാക്കളെ കണ്ടെത്തുക",
+                "search.placeholder": "നിങ്ങളുടെ ഗ്രാമം/നഗരവും ഫസലിന്റെ പേരും നൽകുക...",
+                "search.button": "ഫസൽ ഡാറ്റ തിരയുക",
+                "data.freshness": "📅 ഡാറ്റ അപ്ഡേറ്റ് ചെയ്തത്: 2 ആഴ്ചകൾക്ക് മുമ്പ്"
+                // Add more Malayalam translations as needed
+            }
+        };
+
+        // Language management
+        let currentLanguage = 'en';
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update all elements with data-i18n-placeholder attribute
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+
+            // Update language button text
+            const languageNames = {
+                en: '🌐 English',
+                hi: '🌐 हिन्दी',
+                mr: '🌐 मराठी',
+                gu: '🌐 ગુજરાતી',
+                ta: '🌐 தமிழ்',
+                kn: '🌐 ಕನ್ನಡ',
+                or: '🌐 ଓଡ଼ିଆ',
+                ml: '🌐 മലയാളം'
+            };
+            
+            document.getElementById('languageBtn').textContent = languageNames[lang] || '🌐 English';
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+
+            // Save to localStorage
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved language or default to English
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLanguage);
+
+            // Language switcher functionality
+            document.getElementById('languageBtn').addEventListener('click', function() {
+                document.getElementById('languageDropdown').classList.toggle('active');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.language-switcher')) {
+                    document.getElementById('languageDropdown').classList.remove('active');
+                }
+            });
+
+            // Language option clicks
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
+                    document.getElementById('languageDropdown').classList.remove('active');
                 });
-            }
-        });
+            });
 
-        // Enter key for search
-        document.querySelector('.search-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.querySelector('.search-btn').click();
-            }
-        });
+            // Mobile menu functionality
+            document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+                document.querySelector('.nav-menu').classList.toggle('active');
+            });
 
-        // Simple smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+            // Search Functionality
+            document.querySelector('.search-btn').addEventListener('click', function() {
+                const searchQuery = document.querySelector('.search-input').value;
+                if (searchQuery.trim()) {
+                    // Show results section
+                    document.querySelector('.results-section').classList.add('results-active');
+                    
+                    // Scroll to results
+                    document.querySelector('.results-section').scrollIntoView({ 
+                        behavior: 'smooth' 
                     });
+                }
+            });
+
+            // Enter key for search
+            document.querySelector('.search-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.querySelector('.search-btn').click();
+                }
+            });
+
+            // Simple smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        document.querySelector('.nav-menu').classList.remove('active');
+                    }
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-container')) {
                     document.querySelector('.nav-menu').classList.remove('active');
                 }
             });
-        });
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.nav-container')) {
-                document.querySelector('.nav-menu').classList.remove('active');
-            }
-        });
-
-        // Simulate contact buttons
-        document.querySelectorAll('.contact-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (this.textContent.includes('Call')) {
-                    alert('Calling service provider...');
-                } else if (this.textContent.includes('Directions')) {
-                    alert('Opening map for directions...');
-                }
+            // Simulate contact buttons
+            document.querySelectorAll('.contact-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.textContent.includes('Call')) {
+                        alert('Calling service provider...');
+                    } else if (this.textContent.includes('Directions')) {
+                        alert('Opening map for directions...');
+                    }
+                });
             });
         });
     </script>
